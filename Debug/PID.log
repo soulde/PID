@@ -1,0 +1,5 @@
+﻿  main.c
+D:\github\c\PID\main.c(31,40): warning C4090: “函数”: 不同的“const”限定符
+D:\github\c\PID\main.c(31,48): warning C4305: “函数”: 从“double”到“float”截断
+D:\github\c\PID\main.c(31,52): warning C4305: “函数”: 从“double”到“float”截断
+  PID.vcxproj -> D:\github\c\PID\Debug\PID.exe
