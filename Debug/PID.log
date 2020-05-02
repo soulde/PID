@@ -1,5 +1,9 @@
 ﻿  main.c
-D:\github\c\PID\main.c(31,40): warning C4090: “函数”: 不同的“const”限定符
-D:\github\c\PID\main.c(31,48): warning C4305: “函数”: 从“double”到“float”截断
-D:\github\c\PID\main.c(31,52): warning C4305: “函数”: 从“double”到“float”截断
-  PID.vcxproj -> D:\github\c\PID\Debug\PID.exe
+D:\opensource_project\PID\main.c(26,70): warning C4244: “+=”: 从“double”转换到“float”，可能丢失数据
+D:\opensource_project\PID\main.c(15,1): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+D:\opensource_project\PID\main.c(16,1): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+D:\opensource_project\PID\main.c(18,1): warning C4305: “初始化”: 从“double”到“const float”截断
+D:\opensource_project\PID\main.c(38,38): warning C4305: “函数”: 从“double”到“const float”截断
+D:\opensource_project\PID\main.c(38,42): warning C4305: “函数”: 从“double”到“const float”截断
+D:\opensource_project\PID\main.c(38,46): warning C4305: “函数”: 从“double”到“const float”截断
+  PID.vcxproj -> D:\opensource_project\PID\Debug\PID.exe

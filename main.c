@@ -1,60 +1,52 @@
-#include"pid.h"
+#include<stdio.h>
+#include<stdlib.h>
 #include<time.h>
+#include"PIDController.h"
 
-//parameters for PID
-#define KP 0.75
-#define KI 0.175
-#define KD 0.035
+#define KP 0.45
+#define KI 0.05
+#define KD 0.07
 
-//target value
-const double target = 500;
+#define TARGET 100
 
+float simulator(float power,int isLinear)
+{
+	srand((unsigned)time(NULL));
+	float error1 = (rand() % 200 * 0.01 - 1) * 0.1;
+	float error2 = (rand() % 200 * 0.01 - 1) * 0.07;
+	static float output ;
+	const float mechaneff = 1.7;
+
+	power += error2;
+	if (isLinear) 
+	{
+		output += power * mechaneff;
+	}
+	else {
+		output += power * power * mechaneff / 1.2 + power * mechaneff * 0.6;
+	}
+
+
+	return output + error1;
+}
 
 
 int main()
 {
-	//set random number seed
-	srand((unsigned int)time(0));
+	float power = 0;
+	float output = 0;
+	Config* controller = init(TARGET, KP, KI, KD);
+	
+	for (;;) {
+		power = fit(output, controller);
+		output = simulator(power, 1);
 
-	double src;
-
-	//set a sample value
-	src = rand()%200;
-
-	//input the original value
-	/*if (scanf_s("%lf", &src) != 1)
-	{
-		return -1;
-	}
-	*/
-
-	struct PID* p = PID_init(&src, &target, KP, KI, KD);
-
-	printf_s("%f\n", src);
-	//simulate a loop
-	for (int times = 1;; times++)
-	{
-		//pid control
-		PID_controller(p);
-
-		//print every temp value
-		printf_s("%1.9f\n",p->result);
-
-		//end the loop
-		if (fabs(p->result - target) < 1e-6)
-		{
-			//output for modification
-			printf_s("使用了%d次PID调节\n", times);
-
-			//free the RAM
-			free(p);
-
+		printf_s("%f\n", output);
+		if (output - TARGET<0.001 && output - TARGET>-0.001)
 			break;
-		}
-
-		//simulate a error caused by mechine
-		p->result += 1e-6 * ((rand() % 20)+1-10);
+		system("pause");
 	}
+	printf_s("success!!");
 
 	return 0;
 }

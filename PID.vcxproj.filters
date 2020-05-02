@@ -18,12 +18,12 @@
     <ClCompile Include="main.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="pid.c">
+    <ClCompile Include="PIDController.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pid.h">
+    <ClInclude Include="PIDController.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
